@@ -25,18 +25,16 @@ export class LoginComponent {
 
  
   login(){
-    console.log(this.miFormulario.value);
-    // this.router.navigateByUrl('/dashboard');
+
     const { email, password } = this.miFormulario.value;
     
     this.authService.login( email, password )
       .subscribe( ok => {
-       console.log(ok);
+        console.log(ok);
         if( ok === true ) {
           this.router.navigateByUrl('/dashboard');
         }else{
           Swal.fire('Error', ok, 'error');
-          //TODO: mostrar msj error
         }
       }
 
