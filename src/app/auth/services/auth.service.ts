@@ -18,28 +18,26 @@ export class AuthService {
     return { ...this._usuario };
   }
 
-  constructor(private http: HttpClient ) { }
+  constructor(private http: HttpClient) { }
 
 
-  login(email: string, password: string){
-    
+  login(email: string, password: string) {
+
     const url: string = `${this.daseUrl}/auth`;
     const body = { email, password }
 
-    return this.http.post<AuthResponse>( url, body )
+    return this.http.post<AuthResponse>(url, body)
       .pipe(
         tap( resp => {
-          if( resp.ok ){
+          if (resp.ok) {
             this._usuario = {
-              name:resp.name!,
+              name: resp.name!,
               uid: resp.uid!
             }
           }
-        }
-
-        ),
-        map( resp => resp.ok),
-        catchError( err => of(false) )
+        }),
+        map( resp => resp.ok ),
+        catchError( err => of(err.error.msg) )
       )
 
   }

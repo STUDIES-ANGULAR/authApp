@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import Swal from 'sweetalert2';
+
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -28,10 +31,11 @@ export class LoginComponent {
     
     this.authService.login( email, password )
       .subscribe( ok => {
-        // console.log(resp);
-        if( ok ) {
+       console.log(ok);
+        if( ok === true ) {
           this.router.navigateByUrl('/dashboard');
         }else{
+          Swal.fire('Error', ok, 'error');
           //TODO: mostrar msj error
         }
       }

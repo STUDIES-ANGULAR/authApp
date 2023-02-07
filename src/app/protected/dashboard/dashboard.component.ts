@@ -23,8 +23,6 @@ export class DashboardComponent  {
                private authService: AuthService ) { }
 
 
- 
-
   logout(){
     console.log('salir de la app');
     this.router.navigateByUrl('/auth');
