@@ -15,7 +15,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   miFormulario: FormGroup = this.fb.group({
-    email:    ['test1@test.com', [ Validators.required, Validators.email ]],
+    email:    ['test15@test.com', [ Validators.required, Validators.email ]],
     password: ['1234567', [ Validators.required, Validators.minLength(6) ]]
   });
   constructor( private fb: FormBuilder,
@@ -36,7 +36,7 @@ export class LoginComponent {
         }else{
           Swal.fire('Error', ok, 'error');
         }
-        
+
       }
 
     );
