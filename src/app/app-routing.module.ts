@@ -22,7 +22,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    useHash: false //si es True: Manejo de rutas con hash ( # ), concatena el #  para evitar error de rutas en despliuegue al recargar
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
